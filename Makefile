@@ -24,7 +24,7 @@ LDFLAGS :=			-flto
 
 ################################################################################
 
-NAME :=				misort
+NAME :=				name
 
 DEP_PATH :=			./DEP
 DEP_PATH_MAKE :=	DEP/
