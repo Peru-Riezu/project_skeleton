@@ -69,7 +69,13 @@ CURRENT_DIR :=		$(shell pwd)
 MANPATH_APPEND :=	$(CURRENT_DIR)/manpages
 CURRENT_MANPAHT :=	$(shell man --path)
 
-ifneq ($(MAKECMDGOALS),$(NAME))
+ifeq ($(MAKECMDGOALS),$(NAME))
+-include $(DEP)
+endif
+ifeq ($(MAKECMDGOALS),all)
+-include $(DEP)
+endif
+ifeq ($(MAKECMDGOALS),)
 -include $(DEP)
 endif
 
