@@ -95,14 +95,14 @@ $(OBJ_PATH)/%.o: %.cpp
 $(DEP_PATH)/%.d: %.cpp | $(NEW_DIRS)
 	@rm -f $(DEP_PATH)/$@; \
 		$(CXX) $(CXXFLAGS) -M $< > $@.tmp; \
-		sed 's,$(notdir $*).o[ :]*,$(OBJ_PATH)/$(subst $(DEP_PATH_MAKE),,$(basename $@).o) $@ : ,g' \
+		sed '1 s,$(notdir $*).o[ :]*,$(OBJ_PATH)/$(subst $(DEP_PATH_MAKE),,$(basename $@).o) $@ : ,g' \
 	   	< $@.tmp > $@; \
 		rm -f $@.tmp
 
 $(DEP_PATH)/%.d: %.c | $(NEW_DIRS)
 	@rm -f $(DEP_PATH)/$@; \
 		$(CC) $(CFLAGS) -M $< > $@.tmp; \
-		sed 's,$(notdir $*).o[ :]*,$(OBJ_PATH)/$(subst $(DEP_PATH_MAKE),,$(basename $@).o) $@ : ,g' \
+		sed '1 s,$(notdir $*).o[ :]*,$(OBJ_PATH)/$(subst $(DEP_PATH_MAKE),,$(basename $@).o) $@ : ,g' \
 	   	< $@.tmp > $@; \
 		rm -f $@.tmp
 
